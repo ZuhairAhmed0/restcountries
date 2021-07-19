@@ -105,7 +105,7 @@ function update(data) {
             </div>
         </div>
         `
-        if (i > 7) break;
+        if (i > 6) break;
     }
 }
 
