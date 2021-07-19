@@ -78,7 +78,7 @@ $(function() {
 });
 
 function update(data) {
-    for (let i = 0; i <= data.length; i++) {
+    for (let i = 206; i <= data.length; i++) {
         main.innerHTML += 
         `<div class="country bg-white" data-delails="${data[i].name}">
             <img src="${data[i].flag}" alt="flag ${i}" />
@@ -101,7 +101,7 @@ function update(data) {
             </div>
         </div>
         `
-        if (i > 10) break;
+        if (i > 215) break;
     }
 }
 
