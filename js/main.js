@@ -103,7 +103,7 @@ function update(data) {
             </div>
         </div>
         `
-        if (i > 6) break;
+        if (i > 8) break;
     }
 }
 
