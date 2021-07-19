@@ -39,11 +39,13 @@ btnShearch.addEventListener('click', async function () {
 
 mainBack.addEventListener('click', function () {
     $('.back').click(async function () {
-        const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag';
+        /*const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag';
         const response = await fetch(url);
         const data = await response.json();
         main.innerHTML = '';
-        update(data);
+        update(data);*/
+        loadDataSudan();
+        loadData();
         $(function () {
             $(nav).show(700);
             $('.back').hide()
