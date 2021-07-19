@@ -39,8 +39,8 @@ btnShearch.addEventListener('click', async function () {
 mainBack.addEventListener('click', function () {
     $('.back').click(async function () {
         main.innerHTML = '';
-        loadData();
         loadDataSudan();
+        loadData();
         $(function () {
             $(nav).show(700);
             $('.back').hide()
