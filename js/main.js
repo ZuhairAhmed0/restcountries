@@ -58,7 +58,6 @@ regions.forEach(function (region) {
 },true)
 
 $(function() {
-   $('.filterByRegion').hide();
    $('.filter').click(function() {
       $('.filterByRegion').slideToggle(700);
    })
@@ -71,9 +70,7 @@ $(function() {
          $('.contianer, .search button, .search input').toggleClass('drak-contianer')
       })
    }
-   setTimeout(function(){
-      drakMode();
-   },3000)
+   setTimeout(drakMode,3000)
    
 });
 
