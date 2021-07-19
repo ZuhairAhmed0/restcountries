@@ -9,7 +9,7 @@ const mode = document.querySelector('.mode');
 //https://restcountries.eu/rest/v2/all?fields=name;population;region;capital
 
 const loadData = async function () {
-    const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital';
+    const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag';
     const response = await fetch(url);
     const data = await response.json();
     update(data);
@@ -18,18 +18,21 @@ loadData();
 
 btnShearch.addEventListener('click', async function () {
     let countryName = inpShearch.value;
-    const url = `https://restcountries.eu/rest/v2/name/${url}`;
+    const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
     const response = await fetch(url);
     const data = await response.json();
     if (countryName != '') {
         main.innerHTML = '';
+        inpShearch.value = '';
+        console.log(data);
         update(data);
     }
+    
 })
 
 mainBack.addEventListener('click', function () {
     $('.back').click(async function () {
-        const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital';
+        const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag';
         const response = await fetch(url);
         const data = await response.json();
         main.innerHTML = '';
@@ -68,7 +71,10 @@ $(function() {
          $('.contianer, .search button, .search input').toggleClass('drak-contianer')
       })
    }
-   drakMode();
+   setTimeout(function(){
+      drakMode();
+   },3000)
+   
 });
 
 function update(data) {
@@ -103,20 +109,21 @@ main.addEventListener('click', function (e) {
     $('.country').click(async function () {
         const url = `https://restcountries.eu/rest/v2/name/${this.dataset.delails}?fullText=true`;
         const response = await fetch(url);
-        const data = await response.json();
+        const allData= await response.json();
+        const data = allData[0]
         $(function () {
             $(nav).hide(700);
         });
         let lang = [];
-        data.languages.forEach(item => {
-            lang.push(item.name);
+       data.languages.forEach(item => {
+           lang.push(item.name);
         })
         mainBack.innerHTML = '<button class="back bg-white"><i class="fa fa-arrow-left"></i>back</button>'
         main.innerHTML =
         `<div class="country delails bg-white">
             <img src="${data.flag}" alt="" />
             <div class="info">
-                <h4>${this.dataset.delails}</h4>
+                <h4>${data.name}</h4>
                 <p>
                     <strong>nativeName: </strong>
                     <small>${data.nativeName}</small>
@@ -146,7 +153,7 @@ main.addEventListener('click', function (e) {
                 </p>
                 <p>
                     <strong>Currencies: </strong>
-                    <small>${data.currencies[0].code}</small>
+                    <small>${data.currencies[0].name}</small>
                 </p>
                 <p>
                     <strong>languages: </strong>
