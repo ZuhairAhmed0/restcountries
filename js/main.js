@@ -8,6 +8,13 @@ const mode = document.querySelector('.mode');
 //https://restcountries.eu/rest/v2/all
 //https://restcountries.eu/rest/v2/all?fields=name;population;region;capital
 
+const loadDataSudan = async function () {
+    const url = 'https://restcountries.eu/rest/v2/name/sudan?fields=name;population;region;capital;flag';
+    const response = await fetch(url);
+    const data = await response.json();
+    update(data);
+}
+loadDataSudan();
 const loadData = async function () {
     const url = 'https://restcountries.eu/rest/v2/all?fields=name;population;region;capital;flag';
     const response = await fetch(url);
@@ -75,7 +82,7 @@ $(function() {
 });
 
 function update(data) {
-    for (let i = 205; i <= data.length; i++) {
+    for (let i = 0; i <= data.length; i++) {
         main.innerHTML += 
         `<div class="country bg-white" data-delails="${data[i].name}">
             <img src="${data[i].flag}" alt="flag ${i}" />
@@ -98,7 +105,7 @@ function update(data) {
             </div>
         </div>
         `
-        if (i > 215) break;
+        if (i > 7) break;
     }
 }
 
