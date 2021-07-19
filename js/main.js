@@ -31,7 +31,6 @@ btnShearch.addEventListener('click', async function () {
     if (countryName != '') {
         main.innerHTML = '';
         inpShearch.value = '';
-        console.log(data);
         update(data);
     }
     
@@ -40,8 +39,8 @@ btnShearch.addEventListener('click', async function () {
 mainBack.addEventListener('click', function () {
     $('.back').click(async function () {
         main.innerHTML = '';
-        loadDataSudan();
         loadData();
+        loadDataSudan();
         $(function () {
             $(nav).show(700);
             $('.back').hide()
